@@ -14,6 +14,7 @@ p <- 0.488
 n <- 10 
 
 k <- 0:n 
+
 dbinom(k, n, p)
 
 # --b
@@ -28,16 +29,16 @@ dbinom(k, n, p)
 
 k <- 0:2 
 
-res <- pbinom(k, n, p) 
-
-res [3]
+pbinom(k, n, p)[3]
 
 # --d
 #  Berapa probabilitas bahwa tiga atau lebih bayi di antaranya berjenis kelamin laki-laki?
 
-k <- 0:2 
+k <- 2
 
-pbinom(k, n, p)[3]
+val <- pbinom(k, n, p)
+
+1 - val
 
 # --e
 #  Berapa nilai harapan dan simpangan baku banyak bayi laki-laki?
@@ -50,3 +51,5 @@ sqrt(n * p * (1 - p))
 
 # --f
 # Gambarkan histogram pendistribusian banyak bayi laki-laki.
+
+hist(rbinom(100, n, p), main = "Histogram Distribusi Bayi Laki-laki", xlab = "Banyak Bayi Laki-Laki", ylab = "Frekuensi")
