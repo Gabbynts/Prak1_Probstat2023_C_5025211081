@@ -20,6 +20,29 @@
 # X1 = 5
 # X2 = 6
 
+set.seed(123)
+
+n <- 100
+mean <- 45
+sd <- 5
+
+val = rnorm(n, mean, sd)
+
+res = mean(val)
+
+val1 = floor(res)
+val2 = ceiling(res)
+
+val1
+val2
+
+# P(X1 ≤ x ≤ X2)
+pnorm(val2, mean, sd) - pnorm(val1, mean, sd)
+
+# z-score
+(val - res) / sd
+
+plot((val - res) / sd, main = "Data Bangkitan Acak", xlab = "Index", ylab = "Frekuensi")
 
 # --b
 # Gambarkan histogram dari distribusi Normal dengan breaks 50
