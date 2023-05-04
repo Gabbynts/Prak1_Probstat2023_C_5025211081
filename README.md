@@ -355,7 +355,15 @@ Hasil dari program :
 
 ![ss5](/images/ss5.jpg)
 
-- G. Jelaskan banyak kematian akibat kanker tulang berdasarkan simulasi Anda. Bandingkan jawaban pada pertanyaan 2d dengan hasil simulasi Anda
+- H. Jelaskan banyak kematian akibat kanker tulang berdasarkan simulasi Anda. Bandingkan jawaban pada pertanyaan 2d dengan hasil simulasi Anda
+
+Banyak kematian yag diakibatkan oleh kanker tulang dalam simulasi akan bervariasi setiap kali program dijalankan.
+
+Namun, hasil simulasi yang sudah di dapatkan akan mengikuti distribusi Poisson dengan parameter yang diberikan, yaitu λ = 1,8. 
+
+Oleh karena itu, hasil simulasi yang dicari dapat membantu mengkonfirmasi hasil perhitungan sebelumnya, serta memberikan gambaran visual tentang distribusi banyak kematian akibat kanker tulang yang terkena pada pekerja pabrik ban. 
+
+Hasil simulasi yang dilakukan juga memberikan visualisasi bahwa hasil yang didapatkan pada bagian 2d sesuai. Yang dimana apabila dilihat dari hasil simulasi, menunjukkan bahwa peluang banyak kematian akibat kanker tulang yang lebih dari 4 sangat sedikit dibandingkan dengan kematian akibat kanker tulang yang kurang atau sama dengan 4. 
 
 ## Soal 3
 Diketahui nilai x = 3 dan v = 10. Tentukan:
@@ -464,12 +472,63 @@ X1 = 5
 X2 = 6
 
 ```
+set.seed(123)
+
+n <- 100
+mean <- 45
+sd <- 5
+
+val = rnorm(n, mean, sd)
+
+res = mean(val)
+
+val1 = floor(res)
+val2 = ceiling(res)
+
+val1
+val2
+
+# P(X1 ≤ x ≤ X2)
+pnorm(val2, mean, sd) - pnorm(val1, mean, sd)
+
+# z-score
+(val - res) / sd
+
+plot((val - res) / sd, main = "Data Bangkitan Acak", xlab = "Index", ylab = "Frekuensi")
 ```
+Keterangan :
+- n : jumlah observasi dalam data yang dibangkitkan
+- mean : nilai rata-rata dari distribusi normal 
+- sd : besarnya variasi data dalam distribusi normal
+
+Fungsi rnorm() digunakan untuk menghasilkan angka acak yang mengikuti distribusi normal dengan mean dan standar deviasi yang sudah diketahui, dengan jumlah data acak yang dihasilkan adalah sebanyak 100 data.
+
+Digunakan fungsi floor() dan ceiling() yang dimana masing-masing digunakan untuk mendapatkan hasil ``val1`` dan ``val2``. Fungsi tersebut juga masing-masing menghasilkan bilangan desimal yang dibulatkan ke terkecil dan terbesar dari angka tersebut.
+
+Fungsi pnorm() digunakan untuk menghitung peluang kumulatif dari variabel acak yang mengikuti distribusi normal, dengan menggunakan mean dan standar deviasi yang ditentukan.
+
+Fungsi plot() digunakan untuk menghasilkan grafik yang menunjukkan distribusi data acak yang telah dihasilkan dalam bentuk z-score.
 
 Hasil dari program :
 
 ```
+# Nilai val1
+45
+
+# Nilai val2
+46
+
+# Nilai P(X1 ≤ x ≤ X2)
+0.07925971
 ```
+
+Hasil z-score :
+
+![ss8](/images/ss8.jpg)
+
+Hasil Data :
+
+![ss9](/images/ss9.jpg)
 
 - B. Gambarkan histogram dari distribusi Normal dengan breaks 50
 
